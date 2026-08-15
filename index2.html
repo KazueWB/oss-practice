@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Chu Vi và Diện Tích</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            display: none;
+        }
+        .result p {
+            margin: 5px 0;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h2>Hình Chữ Nhật</h2>
+        
+        <label for="chieuDai">Chiều dài:</label>
+        <input type="number" id="chieuDai" placeholder="Nhập chiều dài..." min="0">
+
+        <label for="chieuRong">Chiều rộng:</label>
+        <input type="number" id="chieuRong" placeholder="Nhập chiều rộng..." min="0">
+
+        <button onclick="tinhToan()">Tính toán</button>
+
+        <div class="result" id="ketQua">
+            <p id="chuVi"></p>
+            <p id="dienTich"></p>
+        </div>
+    </div>
+
+    <script>
+        function tinhToan() {
+            // Lấy giá trị từ ô nhập liệu
+            let d = parseFloat(document.getElementById('chieuDai').value);
+            let r = parseFloat(document.getElementById('chieuRong').value);
+
+            // Kiểm tra xem dữ liệu nhập vào có hợp lệ không
+            if (isNaN(d) || isNaN(r) || d <= 0 || r <= 0) {
+                alert("Vui lòng nhập số dương hợp lệ!");
+                return;
+            }
+
+            // Tính toán
+            let chuVi = (d + r) * 2;
+            let dienTich = d * r;
+
+            // Hiển thị kết quả
+            document.getElementById('ketQua').style.display = 'block';
+            document.getElementById('chuVi').innerText = "Chu vi: " + chuVi;
+            document.getElementById('dienTich').innerText = "Diện tích: " + dienTich;
+        }
+    </script>
+</body>
+</html>
